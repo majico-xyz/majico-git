@@ -1,0 +1,60 @@
+{
+  "name": "@majico-xyz/git",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Majico git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majico-xyz/majico-git.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js",
+      "default": "./dist/*.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.1.6",
+    "@supabase/supabase-js": "^2.49.0"
+  },
+  "dependencies": {
+    "@majico-xyz/git-providers": "^0.1.0",
+    "@majico-xyz/integrations": "^0.1.0"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2.49.0"
+  },
+  "peerDependenciesMeta": {
+    "@supabase/supabase-js": {
+      "optional": true
+    }
+  }
+}
